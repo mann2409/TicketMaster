@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SearchForm from "./components/SearchForm";
+import EventDetails from "./components/EventDetails";
 
 function App() {
+  const [event, setEvent] = useState(null); // Initialize event state as null
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Event Search</h1>
+      <SearchForm setEvent={setEvent} />{" "}
+      {/* Pass setEvent function as a prop to SearchForm */}
+      {event && <EventDetails event={event} />}{" "}
+      {/* Render EventDetails if event is available */}
     </div>
   );
 }
